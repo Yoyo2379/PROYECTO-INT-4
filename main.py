@@ -19,6 +19,7 @@ class AbarrotesApp:
         self.total_venta = 0.0
         
         self.setup_ui()
+        print("Aplicación iniciada correctamente!")  # Debug
         
     def load_config(self):
         try:
@@ -49,8 +50,12 @@ class AbarrotesApp:
         
     def get_connection(self):
         try:
-            return psycopg2.connect(**self.db_config)
+            print(f"Intentando conectar con: {self.db_config}")  # Debug
+            conn = psycopg2.connect(**self.db_config)
+            print("Conexión exitosa!")  # Debug
+            return conn
         except Exception as e:
+            print(f"Error de conexión: {e}")  # Debug
             messagebox.showerror("Error de Conexión", f"No se pudo conectar a la base de datos: {e}")
             return None
     
@@ -262,9 +267,11 @@ class AbarrotesApp:
                     conn.close()
     
     def cargar_productos(self):
+        print("Cargando productos...")  # Debug
         try:
             conn = self.get_connection()
             if not conn:
+                print("No se pudo obtener conexión")  # Debug
                 return
                 
             cursor = conn.cursor()
