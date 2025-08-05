@@ -1,0 +1,9 @@
+{
+    "database": {
+        "host": "localhost",
+        "database": "abarrotes",
+        "user": "postgres",
+        "password": "Yoyo_2349!",
+        "port": 5432
+    }
+}
